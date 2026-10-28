@@ -1,7 +1,10 @@
+from django.views.generic import CreateView, ListView
 from django.shortcuts import render
 from django.utils import timezone
+from django.urls import reverse_lazy
 
-from .models import Films, AnimatedShows, Cartoons, TVShows, Photo
+from .models import Films, AnimatedShows, Cartoons, TVShows, Photo, Trips
+from .forms import TripsForm
 from core.constants import TEXT_ABOUT_US
 
 
@@ -29,6 +32,14 @@ def gallery(request):
     return render(request, 'we/gallery.html', context)
 
 
-def trips(request):
-    context = {}
-    return render(request, 'we/trips_card.html', context)
+class TripsListView(ListView):
+    model = Trips
+    template_name = 'we/trips_card.html'
+    context_object_name = 'trips'
+
+
+class AddNewTripCreateView(CreateView):
+    model = Trips
+    form_class = TripsForm
+    template_name = 'we/add_new_trip.html'
+    success_url = reverse_lazy('we:trips')

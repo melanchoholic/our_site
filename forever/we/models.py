@@ -91,17 +91,17 @@ class Trips(models.Model):
     description = models.TextField('Описание поездки')
     image1 = models.ImageField(
         verbose_name='фоточка1',
-        blank=True,
+        blank=False,
         upload_to='we/trips'
     )
     image2 = models.ImageField(
             verbose_name='фоточка2',
-            blank=True,
+            blank=False,
             upload_to='we/trips'
         )
     image3 = models.ImageField(
             verbose_name='фоточка3',
-            blank=True,
+            blank=False,
             upload_to='we/trips'
         )
     general_vibe = models.IntegerField(verbose_name='вайб поездки')

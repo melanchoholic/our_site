@@ -147,6 +147,73 @@ body {
    ДОПОЛНИТЕЛЬНЫЕ КЛАССЫ
 ===================================== */
 
+/* Контейнер всей карточки */
 .ada {
-    width: 750px;
+    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between; /* Максимально разносит текст и фото по краям */
+    align-items: stretch !important;
+    gap: 80px; /* Увеличили отступ между текстом и фото */
+    padding-top: 20px;
+}
+
+/* Левая часть (текст) — забирает чуть больше половины ширины */
+.text-side {
+    width: 45%; /* Увеличили с 45% до 55% */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}
+
+/* Правая часть (фото) — занимает оставшееся место */
+.photos-stack {
+    position: relative;
+    width: 55%; /* Блок стал шире */
+    min-height: 570px; 
+    
+    flex-shrink: 0;
+    margin-top: 30px;
+}
+
+/* Сами фотографии — делаем их больше */
+.photo-item {
+    position: absolute;
+    width: 330px; /* Было 160px */
+    height: 450px; /* Было 220px */
+    object-fit: cover;
+    border: 6px solid #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+/* Раздвигаем фото по диагонали, чтобы заполнить правую часть */
+.photo-item:nth-child(1) {
+    top: 0;
+    left: 0;
+    transform: rotate(-8deg);
+    z-index: 1;
+}
+
+.photo-item:nth-child(2) {
+    top: 20px; /* Увеличили сдвиг вниз */
+    left: 200px; /* Увеличили сдвиг вправо */
+    transform: rotate(2deg);
+    z-index: 2;
+}
+
+.photo-item:nth-child(3) {
+    top: 70px;
+    left: 400px;
+    transform: rotate(12deg);
+    z-index: 3;
+}
+
+/* Эффект при наведении */
+.photo-item:hover {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 10;
 }
