@@ -1,0 +1,44 @@
+.tables-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.table-card {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.films-grid {
+  display: grid;
+  grid-template-columns: 50px 250px 1fr 1fr 1fr 1fr;
+  gap: 0;
+}
+
+.grid-header {
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.films-grid > div {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* убираем правую границу у последней колонки — рамку даёт .table-card */
+.films-grid > div:nth-child(6n) {
+  border-right: none;
+}
+
+/* убираем нижнюю границу у последней строки */
+.films-grid > div:nth-last-child(-n+6) {
+  border-bottom: none;
+}

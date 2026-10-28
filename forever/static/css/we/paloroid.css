@@ -1,0 +1,30 @@
+.polaroid {
+  background: #0677f8;
+  padding: 15px 15px 60px 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: rotate(-3deg);
+  transition: transform 0.4s ease;
+  display: inline-block;
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: 280px;         
+  object-fit: cover;     
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.polaroid::after {
+  content: '♥';
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ee9ca7;
+  font-size: 24px;
+}

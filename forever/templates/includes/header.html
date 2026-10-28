@@ -1,0 +1,13 @@
+{% load static %}
+
+<header>
+    
+    <ul class='nav-pills '>
+        <a href="{% url 'homepage:homepage' %}"> 
+            <img src="{% static 'img/logo2.png' %}">    
+        </a>
+        <a href="{% url 'nastya:nastya_homepage' %}"> <li>Настя</li> </a>
+        <a href="{% url 'we:about_us' %}"> <li>МЫ❤️</li> </a>
+        <a href="{% url 'gnel:gnel_homepage' %}"><li>Гнэл</li> </a>
+    </ul>
+</header>

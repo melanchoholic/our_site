@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='glass'>
+  <p>
+    {{ description }}
+  </p>
+
+    <p>
+      <a href="{% url 'we:gallery' %}"> галерея </a>
+    </p>
+    
+    <p>
+      <a href="{% url 'we:films' %}"> фильмы </a>
+    </p>
+
+    <p>
+      <a href="{% url 'we:trips' %}"> наши поездки </a>
+    </p>
+  </div>
+{% endblock %}

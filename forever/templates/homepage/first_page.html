@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="home-layout">
+
+    <div class="glass home-text">
+        <h1 class="card-title">Наш цифровой дом</h1>
+        <br>
+        <p>
+            Этот сайт — маленький цифровой дом, который мы построили
+            для своей истории. Здесь время замирает, чтобы запечатлеть
+            наши лучшие моменты: от первой встречи до сегодняшнего дня.
+            Мы не знаем, что готовит завтра, но точно знаем, что пройдем
+            это вместе. Спасибо, что заглянули в гости к нашему счастью.
+        </p>
+    </div>
+
+    <aside class="glass relationship-counter">
+        <div class="counter-title">Мы вместе</div>
+            <br>
+        <div class="counter-time">
+            <div class="counter-unit">
+                <span>{{ how_long.years }}</span>
+                <p>{{ how_long.year_end }}</p>
+            </div>
+
+            <div class="counter-unit">
+                <span>{{ how_long.months }}</span>
+                <p>{{ how_long.month_end }}</p>
+            </div>
+
+            <div class="counter-unit">
+                <span>{{ how_long.days }}</span>
+                <p>{{ how_long.day_end }}</p>
+            </div>
+        </div>
+    </aside>
+
+<div class="glass home-bottom">
+        
+        <p>
+            случайное восспоминание и какая-то фотка
+        </p>
+    </div>
+
+
+</div>
+{% endblock %}

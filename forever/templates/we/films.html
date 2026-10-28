@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='glass'>
+<div class="tables-wrapper">
+  <div class="table-card">
+  <div class='films-grid'>
+    <div class="grid-header">№</div>
+    <div class="grid-header">Название фильма</div>
+    <div class="grid-header">Год выхода</div>
+    <div class="grid-header">Кто выбрал</div>
+    <div class="grid-header">Рейтинг Гнэла</div>
+    <div class="grid-header">Рейтинг Насти</div>
+    {% for film in media.films %}
+      <div>{{ film.id }}</div>
+      <div>{{ film.title }}</div> 
+      <div>{{ film.year }}</div>
+      <div>{{ film.who_chose }}</div>
+      <div>{{ film.gnel_rating }}</div>
+      <div>{{ film.nastya_rating }}</div>
+    {% endfor %}
+   </div>         
+   </div> 
+   <div class="table-card">
+<div class='films-grid'>
+    <div class="grid-header">№</div>
+    <div class="grid-header">Название мультфильма</div>
+    <div class="grid-header">Год выхода</div>
+    <div class="grid-header">Кто выбрал</div>
+    <div class="grid-header">Рейтинг Гнэла</div>
+    <div class="grid-header">Рейтинг Насти</div>
+    {% for film in media.cartoons %}
+      <div>{{ film.id }}</div>
+      <div>{{ film.title }}</div> 
+      <div>{{ film.year }}</div>
+      <div>{{ film.who_chose }}</div>
+      <div>{{ film.gnel_rating }}</div>
+      <div>{{ film.nastya_rating }}</div>
+    {% endfor %}
+   </div>   
+   </div> 
+
+</div>
+<br>
+<div class="tables-wrapper">
+  <div class="table-card">
+  <div class='films-grid'>
+    <div class="grid-header">№</div>
+    <div class="grid-header">Название сериала</div>
+    <div class="grid-header">Год выхода</div>
+    <div class="grid-header">Кто выбрал</div>
+    <div class="grid-header">Рейтинг Гнэла</div>
+    <div class="grid-header">Рейтинг Насти</div>
+    {% for film in media.twshows %}
+      <div>{{ film.id }}</div>
+      <div>{{ film.title }}</div> 
+      <div>{{ film.year }}</div>
+      <div>{{ film.who_chose }}</div>
+      <div>{{ film.gnel_rating }}</div>
+      <div>{{ film.nastya_rating }}</div>
+    {% endfor %}
+   </div>         
+  </div>
+   <div class="table-card">
+<div class='films-grid'>
+    <div class="grid-header">№</div>
+    <div class="grid-header">Название мультсериала</div>
+    <div class="grid-header">Год выхода</div>
+    <div class="grid-header">Кто выбрал</div>
+    <div class="grid-header">Рейтинг Гнэла</div>
+    <div class="grid-header">Рейтинг Насти</div>
+    {% for film in media.animatedshows %}
+      <div>{{ film.id }}</div>
+      <div>{{ film.title }}</div> 
+      <div>{{ film.year }}</div>
+      <div>{{ film.who_chose }}</div>
+      <div>{{ film.gnel_rating }}</div>
+      <div>{{ film.nastya_rating }}</div>
+    {% endfor %}
+   </div>   
+   </div>
+   
+</div>
+</div>
+{% endblock %}

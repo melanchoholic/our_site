@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    <link rel='stylesheet' href="{% static 'css/style.css' %}">
+    <link rel='stylesheet' href="{% static 'css/we/paloroid.css' %}">
+    <link rel='stylesheet' href="{% static 'css/we/watched.css' %}">
+    <link rel='stylesheet' href="{% static 'css/homepage/homepage.css' %}">
+    
+    <title>Наш цифровой дом</title>
+</head>
+<body>
+
+    
+
+    <video class='bg-video' autoplay muted loop playsinline>
+        <source src="{% static bg_video %}" type="video/mp4">
+    </video>
+
+    <div class='bg-overlay'></div>
+
+    {% include "includes/header.html" %}
+    
+    <main>
+        <div>
+            {% block content %} здесь пока что ничего нет {% endblock %}
+        </div>
+    </main>
+    
+    <div class='glass contacts'>
+      {% include "includes/footer.html" %}
+    </div>
+    
+</body>
+</html>

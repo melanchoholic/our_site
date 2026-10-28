@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class='glass'>
+<ul class="gallery">
+    {% for photo in photos %}
+        <li class="polaroid">
+            <img src="{{ photo.image.url }}"
+                 alt="{{ photo.caption|default:'Наше фото' }}"
+                 loading="lazy">
+
+            {% if photo.audio %}
+                <audio controls preload="none" onloadstart="this.volume=0.3">
+                    <source src="{{ photo.audio.url }}" type="audio/mpeg">
+                </audio>
+            {% endif %}
+
+            {% if photo.description %}
+                <p class="polaroid-caption">{{ photo.description }}</p>
+            {% endif %}
+        </li>
+    {% empty %}
+        <p>Пока нет ни одного фото 😢</p>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}
