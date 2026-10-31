@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from core.models import BaseWatchedModel
 
@@ -86,25 +87,25 @@ class Trips(models.Model):
         verbose_name='куда',
         max_length=50,
     )
-    travel_date = models.DateField(verbose_name='дата поездки')
-    return_date = models.DateField(verbose_name='дата возвращения')
-    description = models.TextField('Описание поездки')
+    travel_date = models.DateField(verbose_name='дата поездки',)
+    return_date = models.DateField(verbose_name='дата возвращения',)
+    description = models.TextField(verbose_name='Описание поездки',)
     image1 = models.ImageField(
         verbose_name='фоточка1',
-        blank=False,
-        upload_to='we/trips'
+        upload_to='we/trips',
     )
     image2 = models.ImageField(
             verbose_name='фоточка2',
-            blank=False,
-            upload_to='we/trips'
+            upload_to='we/trips',
         )
     image3 = models.ImageField(
             verbose_name='фоточка3',
-            blank=False,
-            upload_to='we/trips'
+            upload_to='we/trips',
         )
-    general_vibe = models.IntegerField(verbose_name='вайб поездки')
+    general_vibe = models.IntegerField(
+        verbose_name='вайб поездки',
+        validators=[MaxValueValidator(0), MaxValueValidator(10)],
+    )
 
     class Meta:
         verbose_name = 'Поездка'
@@ -115,15 +116,12 @@ class Trips(models.Model):
         errors = {}
         travel_date = self.travel_date
         return_date = self.return_date
-        general_vibe = self.general_vibe
 
         if travel_date < settings.START:
             errors['travel_date'] = 'Мы тогда еще не могли никуда съездить :('
         if return_date < travel_date:
             tr_d_str = travel_date.strftime('%d.%m.%Y')
             errors['return_date'] = f'Дата возвращения не может быть раньше {tr_d_str}'
-        if general_vibe < 0 or general_vibe > 10:
-            errors['general_vibe'] = 'Оценка от 0 до 10'
 
         if errors:
             raise ValidationError(errors)

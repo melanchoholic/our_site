@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from adminsortable2.admin import SortableAdminMixin
 
-from .models import Films, Cartoons, TVShows, AnimatedShows, Photo
+from .models import Films, Cartoons, TVShows, AnimatedShows, Photo, Trips
 
 
 @admin.register(Films)
@@ -65,3 +65,18 @@ class PhotoAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_editable = ('is_published',)
     list_filter = ('is_published',)
     search_fields = ('description',)
+
+@admin.register(Trips)
+class TripsAdmin(admin.ModelAdmin):
+    list_display = (
+            'id',
+            'from_where',
+            'to_where',
+            'travel_date',
+            'return_date',
+            'description',
+            'image1',
+            'image2',
+            'image3',
+            'general_vibe'
+        )

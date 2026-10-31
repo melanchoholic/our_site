@@ -217,3 +217,24 @@ body {
     transform: scale(1.1) rotate(0deg);
     z-index: 10;
 }
+
+
+.grid-form {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: inherit;
+  align-items: center;
+}
+
+.grid-form input,
+.grid-form select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-errors {
+  grid-column: 1 / -1;
+  color: #b00;
+  font-size: 0.9em;
+}
