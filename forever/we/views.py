@@ -29,7 +29,7 @@ def films(request):
     if request.method == 'POST':
         form_type = request.POST.get('form_type')
         if form_type in form_classes:
-            form = form_classes[form_type](request.POST, request.FILES)
+            form = form_classes[form_type](request.POST)
             if form.is_valid():
                 form.save()
                 return redirect('we:films')

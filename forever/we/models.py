@@ -104,7 +104,7 @@ class Trips(models.Model):
         )
     general_vibe = models.IntegerField(
         verbose_name='вайб поездки',
-        validators=[MaxValueValidator(0), MaxValueValidator(10)],
+        validators=[MinValueValidator(0), MaxValueValidator(10)],
     )
 
     class Meta:

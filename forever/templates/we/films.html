@@ -1,155 +1,215 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="glass">
-  <div class="tables-wrapper">
 
-    <!-- ФИЛЬМЫ -->
-    <div class="table-card">
-      <div class="films-grid">
-        <div class="grid-header">№</div>
-        <div class="grid-header">Название фильма</div>
-        <div class="grid-header">Год выхода</div>
-        <div class="grid-header">Кто выбрал</div>
-        <div class="grid-header">Рейтинг Гнэла</div>
-        <div class="grid-header">Рейтинг Насти</div>
+    <!-- =================================
+         ПЕРВЫЙ РЯД: ФИЛЬМЫ И МУЛЬТФИЛЬМЫ
+    ================================== -->
 
-        {% for film in media.films %}
-          <div>{{ film.id }}</div>
-          <div>{{ film.title }}</div>
-          <div>{{ film.year }}</div>
-          <div>{{ film.who_chose }}</div>
-          <div>{{ film.gnel_rating }}</div>
-          <div>{{ film.nastya_rating }}</div>
-        {% endfor %}
+    <div class="tables-wrapper">
 
-        <form method="post" enctype="multipart/form-data" class="grid-form">
-          {% csrf_token %}
-          <input type="hidden" name="form_type" value="film">
-          <div>{{ forms.film.title }}</div>
-          <div>{{ forms.film.year }}</div>
-          <div>{{ forms.film.who_chose }}</div>
-          <div>{{ forms.film.gnel_rating }}</div>
-          <div>{{ forms.film.nastya_rating }}</div>
-          <div><button type="submit">Добавить</button></div>
-          {% if forms.film.errors %}
-            <div class="form-errors">{{ forms.film.errors }}</div>
-          {% endif %}
-        </form>
-      </div>
+        <!-- ФИЛЬМЫ -->
+        <div class="table-card">
+            <div class="films-grid">
+
+                <div class="grid-header">№</div>
+                <div class="grid-header">Название фильма</div>
+                <div class="grid-header">Год выхода</div>
+                <div class="grid-header">Кто выбрал</div>
+                <div class="grid-header">Рейтинг Гнэла</div>
+                <div class="grid-header">Рейтинг Насти</div>
+
+                {% for film in media.films %}
+                    <div>{{ film.id }}</div>
+                    <div>{{ film.title }}</div>
+                    <div>{{ film.year }}</div>
+                    <div>{{ film.who_chose }}</div>
+                    <div>{{ film.gnel_rating }}</div>
+                    <div>{{ film.nastya_rating }}</div>
+                {% endfor %}
+
+                <form method="post" class="grid-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="film">
+
+                    <div class="empty-cell"></div>
+                    <div>{{ forms.film.title }}</div>
+                    <div>{{ forms.film.year }}</div>
+                    <div>{{ forms.film.who_chose }}</div>
+                    <div>{{ forms.film.gnel_rating }}</div>
+                    <div>{{ forms.film.nastya_rating }}</div>
+
+                    <div class="submit-cell">
+                        <button type="submit">Добавить</button>
+                    </div>
+
+                    {% if forms.film.errors %}
+                        <div class="form-errors">
+                            {{ forms.film.errors }}
+                        </div>
+                    {% endif %}
+                </form>
+
+            </div>
+        </div>
+
+
+        <!-- МУЛЬТФИЛЬМЫ -->
+        <div class="table-card">
+            <div class="films-grid">
+
+                <div class="grid-header">№</div>
+                <div class="grid-header">Название мультфильма</div>
+                <div class="grid-header">Год выхода</div>
+                <div class="grid-header">Кто выбрал</div>
+                <div class="grid-header">Рейтинг Гнэла</div>
+                <div class="grid-header">Рейтинг Насти</div>
+
+                {% for film in media.cartoons %}
+                    <div>{{ film.id }}</div>
+                    <div>{{ film.title }}</div>
+                    <div>{{ film.year }}</div>
+                    <div>{{ film.who_chose }}</div>
+                    <div>{{ film.gnel_rating }}</div>
+                    <div>{{ film.nastya_rating }}</div>
+                {% endfor %}
+
+                <form method="post" class="grid-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="cartoon">
+
+                    <div class="empty-cell"></div>
+                    <div>{{ forms.cartoon.title }}</div>
+                    <div>{{ forms.cartoon.year }}</div>
+                    <div>{{ forms.cartoon.who_chose }}</div>
+                    <div>{{ forms.cartoon.gnel_rating }}</div>
+                    <div>{{ forms.cartoon.nastya_rating }}</div>
+
+                    <div class="submit-cell">
+                        <button type="submit">Добавить</button>
+                    </div>
+
+                    {% if forms.cartoon.errors %}
+                        <div class="form-errors">
+                            {{ forms.cartoon.errors }}
+                        </div>
+                    {% endif %}
+                </form>
+
+            </div>
+        </div>
+
     </div>
 
-    <!-- МУЛЬТФИЛЬМЫ -->
-    <div class="table-card">
-      <div class="films-grid">
-        <div class="grid-header">№</div>
-        <div class="grid-header">Название мультфильма</div>
-        <div class="grid-header">Год выхода</div>
-        <div class="grid-header">Кто выбрал</div>
-        <div class="grid-header">Рейтинг Гнэла</div>
-        <div class="grid-header">Рейтинг Насти</div>
 
-        {% for film in media.cartoons %}
-          <div>{{ film.id }}</div>
-          <div>{{ film.title }}</div>
-          <div>{{ film.year }}</div>
-          <div>{{ film.who_chose }}</div>
-          <div>{{ film.gnel_rating }}</div>
-          <div>{{ film.nastya_rating }}</div>
-        {% endfor %}
+    <!-- =================================
+         ВТОРОЙ РЯД: СЕРИАЛЫ И МУЛЬТСЕРИАЛЫ
+    ================================== -->
 
-        <form method="post" enctype="multipart/form-data" class="grid-form">
-          {% csrf_token %}
-          <input type="hidden" name="form_type" value="cartoon">
-          <div>{{ forms.cartoon.title }}</div>
-          <div>{{ forms.cartoon.year }}</div>
-          <div>{{ forms.cartoon.who_chose }}</div>
-          <div>{{ forms.cartoon.gnel_rating }}</div>
-          <div>{{ forms.cartoon.nastya_rating }}</div>
-          <div><button type="submit">Добавить</button></div>
-          {% if forms.cartoon.errors %}
-            <div class="form-errors">{{ forms.cartoon.errors }}</div>
-          {% endif %}
-        </form>
-      </div>
+    <div class="tables-wrapper">
+
+        <!-- СЕРИАЛЫ -->
+        <div class="table-card">
+            <div class="shows-grid">
+
+                <div class="grid-header">№</div>
+                <div class="grid-header">Название сериала</div>
+                <div class="grid-header">Сезон</div>
+                <div class="grid-header">Год выхода</div>
+                <div class="grid-header">Кто выбрал</div>
+                <div class="grid-header">Рейтинг Гнэла</div>
+                <div class="grid-header">Рейтинг Насти</div>
+
+                {% for film in media.twshows %}
+                    <div>{{ film.id }}</div>
+                    <div>{{ film.title }}</div>
+                    <div>{{ film.season_num }}</div>
+                    <div>{{ film.year }}</div>
+                    <div>{{ film.who_chose }}</div>
+                    <div>{{ film.gnel_rating }}</div>
+                    <div>{{ film.nastya_rating }}</div>
+                {% endfor %}
+
+                <form method="post" class="grid-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="tvshow">
+
+                    <div class="empty-cell"></div>
+                    <div>{{ forms.tvshow.title }}</div>
+                    <div>{{ forms.tvshow.season_num }}</div>
+                    <div>{{ forms.tvshow.year }}</div>
+                    <div>{{ forms.tvshow.who_chose }}</div>
+                    <div>{{ forms.tvshow.gnel_rating }}</div>
+                    <div>{{ forms.tvshow.nastya_rating }}</div>
+
+                    <div class="submit-cell">
+                        <button type="submit">Добавить</button>
+                    </div>
+
+                    {% if forms.tvshow.errors %}
+                        <div class="form-errors">
+                            {{ forms.tvshow.errors }}
+                        </div>
+                    {% endif %}
+                </form>
+
+            </div>
+        </div>
+
+
+        <!-- МУЛЬТСЕРИАЛЫ -->
+        <div class="table-card">
+            <div class="shows-grid">
+
+                <div class="grid-header">№</div>
+                <div class="grid-header">Название мультсериала</div>
+                <div class="grid-header">Сезон</div>
+                <div class="grid-header">Год выхода</div>
+                <div class="grid-header">Кто выбрал</div>
+                <div class="grid-header">Рейтинг Гнэла</div>
+                <div class="grid-header">Рейтинг Насти</div>
+
+                {% for film in media.animatedshows %}
+                    <div>{{ film.id }}</div>
+                    <div>{{ film.title }}</div>
+                    <div>{{ film.season_num }}</div>
+                    <div>{{ film.year }}</div>
+                    <div>{{ film.who_chose }}</div>
+                    <div>{{ film.gnel_rating }}</div>
+                    <div>{{ film.nastya_rating }}</div>
+                {% endfor %}
+
+                <form method="post" class="grid-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="animatedshow">
+
+                    <div class="empty-cell"></div>
+                    <div>{{ forms.animatedshow.title }}</div>
+                    <div>{{ forms.animatedshow.season_num }}</div>
+                    <div>{{ forms.animatedshow.year }}</div>
+                    <div>{{ forms.animatedshow.who_chose }}</div>
+                    <div>{{ forms.animatedshow.gnel_rating }}</div>
+                    <div>{{ forms.animatedshow.nastya_rating }}</div>
+
+                    <div class="submit-cell">
+                        <button type="submit">Добавить</button>
+                    </div>
+
+                    {% if forms.animatedshow.errors %}
+                        <div class="form-errors">
+                            {{ forms.animatedshow.errors }}
+                        </div>
+                    {% endif %}
+                </form>
+
+            </div>
+        </div>
+
     </div>
 
-  </div>
-
-  <br>
-
-  <div class="tables-wrapper">
-
-    <!-- СЕРИАЛЫ -->
-    <div class="table-card">
-      <div class="films-grid">
-        <div class="grid-header">№</div>
-        <div class="grid-header">Название сериала</div>
-        <div class="grid-header">Год выхода</div>
-        <div class="grid-header">Кто выбрал</div>
-        <div class="grid-header">Рейтинг Гнэла</div>
-        <div class="grid-header">Рейтинг Насти</div>
-
-        {% for film in media.twshows %}
-          <div>{{ film.id }}</div>
-          <div>{{ film.title }}</div>
-          <div>{{ film.year }}</div>
-          <div>{{ film.who_chose }}</div>
-          <div>{{ film.gnel_rating }}</div>
-          <div>{{ film.nastya_rating }}</div>
-        {% endfor %}
-
-        <form method="post" enctype="multipart/form-data" class="grid-form">
-          {% csrf_token %}
-          <input type="hidden" name="form_type" value="tvshow">
-          <div>{{ forms.tvshow.title }}</div>
-          <div>{{ forms.tvshow.year }}</div>
-          <div>{{ forms.tvshow.who_chose }}</div>
-          <div>{{ forms.tvshow.gnel_rating }}</div>
-          <div>{{ forms.tvshow.nastya_rating }}</div>
-          <div><button type="submit">Добавить</button></div>
-          {% if forms.tvshow.errors %}
-            <div class="form-errors">{{ forms.tvshow.errors }}</div>
-          {% endif %}
-        </form>
-      </div>
-    </div>
-
-    <!-- МУЛЬТСЕРИАЛЫ -->
-    <div class="table-card">
-      <div class="films-grid">
-        <div class="grid-header">№</div>
-        <div class="grid-header">Название мультсериала</div>
-        <div class="grid-header">Год выхода</div>
-        <div class="grid-header">Кто выбрал</div>
-        <div class="grid-header">Рейтинг Гнэла</div>
-        <div class="grid-header">Рейтинг Насти</div>
-
-        {% for film in media.animatedshows %}
-          <div>{{ film.id }}</div>
-          <div>{{ film.title }}</div>
-          <div>{{ film.year }}</div>
-          <div>{{ film.who_chose }}</div>
-          <div>{{ film.gnel_rating }}</div>
-          <div>{{ film.nastya_rating }}</div>
-        {% endfor %}
-
-        <form method="post" enctype="multipart/form-data" class="grid-form">
-          {% csrf_token %}
-          <input type="hidden" name="form_type" value="animatedshow">
-          <div>{{ forms.animatedshow.title }}</div>
-          <div>{{ forms.animatedshow.year }}</div>
-          <div>{{ forms.animatedshow.who_chose }}</div>
-          <div>{{ forms.animatedshow.gnel_rating }}</div>
-          <div>{{ forms.animatedshow.nastya_rating }}</div>
-          <div><button type="submit">Добавить</button></div>
-          {% if forms.animatedshow.errors %}
-            <div class="form-errors">{{ forms.animatedshow.errors }}</div>
-          {% endif %}
-        </form>
-      </div>
-    </div>
-
-  </div>
 </div>
+
 {% endblock %}
